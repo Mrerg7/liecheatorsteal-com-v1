@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { RenderedContent } from 'astro:content';
+
+type RenderedRecord = CollectionEntry<'records'> & RenderedContent;
+
+interface Props {
+  records: RenderedRecord[];
+}
+
+const { records } = Astro.props;
+---
+
+<section id="trifecta" class="max-w-6xl mx-auto px-6 pb-20 scroll-mt-20">
+  <div class="flex items-end justify-between mb-8">
+    <div>
+      <div class="flex items-center gap-x-3">
+        <i class="fa-solid fa-skull text-4xl text-red-600"></i>
+        <h2 class="heading-font text-4xl sm:text-5xl font-semibold tracking-tighter">THE TRIFECTA IN ACTION</h2>
+      </div>
+      <p class="text-red-500 mt-1 text-lg">When lie + cheat + steal combine into single operations</p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-5">
+    {
+      records.map((record) => {
+        const { Content } = record;
+        return (
+          <div class="sin-card bg-zinc-900 rounded-3xl p-7">
+            <div class="sin-year text-red-600 text-sm font-mono tracking-widest mb-3">{record.data.year}</div>
+            <h3 class="font-semibold text-xl mb-2">{record.data.title}</h3>
+            <div class="text-sm text-zinc-400 [&_strong]:text-red-500 [&_strong:nth-of-type(2)]:text-yellow-500 [&_strong:nth-of-type(3)]:text-blue-500">
+              <Content />
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>

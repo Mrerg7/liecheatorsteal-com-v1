@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import ManifestoSection from '../components/ManifestoSection.astro';
+import SinSection from '../components/SinSection.astro';
+import TrifectaSection from '../components/TrifectaSection.astro';
+import TestifySection from '../components/TestifySection.astro';
+import FinalStatement from '../components/FinalStatement.astro';
+import AcquisitionCTA from '../components/AcquisitionCTA.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const allRecords = await getCollection('records');
+
+async function renderRecords(category: 'lie' | 'cheat' | 'steal' | 'trifecta') {
+  const filtered = allRecords
+    .filter((r) => r.data.category === category)
+    .sort((a, b) => a.data.order - b.data.order);
+
+  return Promise.all(
+    filtered.map(async (record) => ({
+      ...record,
+      ...(await record.render()),
+    })),
+  );
+}
+
+const lieRecords = await renderRecords('lie');
+const cheatRecords = await renderRecords('cheat');
+const stealRecords = await renderRecords('steal');
+const trifectaRecords = await renderRecords('trifecta');
+---
+
+<BaseLayout>
+  <Nav />
+  <main>
+    <Hero />
+    <ManifestoSection />
+    <SinSection
+      id="lie"
+      title="THE LIE MACHINE"
+      subtitle="Falsehoods told from the highest offices"
+      icon="fa-solid fa-mask"
+      iconColor="text-red-500"
+      accentColor="text-red-500"
+      categoryLabel="CATEGORY I"
+      categoryTagline="THE DEFAULT SETTING"
+      records={lieRecords}
+    />
+    <SinSection
+      id="cheat"
+      title="THE CHEAT CODEX"
+      subtitle="Gaming rules, processes, and systems for advantage"
+      icon="fa-solid fa-dice"
+      iconColor="text-yellow-500"
+      accentColor="text-yellow-500"
+      categoryLabel="CATEGORY II"
+      categoryTagline="THE RULES DON'T APPLY"
+      records={cheatRecords}
+    />
+    <SinSection
+      id="steal"
+      title="THE STEAL LEDGER"
+      subtitle="Taking what belongs to others — money, power, futures"
+      icon="fa-solid fa-hand-holding-dollar"
+      iconColor="text-blue-500"
+      accentColor="text-blue-500"
+      categoryLabel="CATEGORY III"
+      categoryTagline="THE TRANSFER OF WEALTH & POWER"
+      records={stealRecords}
+    />
+    <TrifectaSection records={trifectaRecords} />
+    <TestifySection />
+    <FinalStatement />
+    <AcquisitionCTA />
+    <Footer />
+  </main>
+</BaseLayout>

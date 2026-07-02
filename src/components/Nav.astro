@@ -1,0 +1,55 @@
+<nav class="border-b border-zinc-800 bg-[#0c0c0c]/95 backdrop-blur-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex items-center gap-x-3">
+        <div class="w-9 h-9 bg-red-600 flex items-center justify-center rounded-xl shadow-inner">
+          <i class="fa-solid fa-mask text-white text-2xl"></i>
+        </div>
+        <div>
+          <span class="heading-font text-3xl font-semibold tracking-tighter">lie</span>
+          <span class="heading-font text-3xl font-semibold tracking-tighter text-red-600">cheat</span>
+          <span class="heading-font text-3xl font-semibold tracking-tighter">or</span>
+          <span class="heading-font text-3xl font-semibold tracking-tighter text-blue-500">steal</span>
+          <span class="text-[10px] align-super text-red-600 font-mono">.com</span>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+        <a href="#lie" class="hover:text-red-500 transition-colors flex items-center gap-x-1.5">
+          <i class="fa-solid fa-mask fa-sm"></i> <span>LIE</span>
+        </a>
+        <a href="#cheat" class="hover:text-yellow-500 transition-colors flex items-center gap-x-1.5">
+          <i class="fa-solid fa-dice fa-sm"></i> <span>CHEAT</span>
+        </a>
+        <a href="#steal" class="hover:text-blue-500 transition-colors flex items-center gap-x-1.5">
+          <i class="fa-solid fa-hand-holding-dollar fa-sm"></i> <span>STEAL</span>
+        </a>
+        <a href="#trifecta" class="hover:text-red-500 transition-colors">The Trifecta</a>
+      </div>
+
+      <div class="flex items-center gap-x-4">
+        <a
+          href="#testify"
+          class="px-5 py-2.5 text-sm font-semibold bg-red-600 hover:bg-red-700 transition-all rounded-2xl flex items-center gap-x-2 shadow-lg shadow-red-950/50"
+        >
+          <i class="fa-solid fa-exclamation-triangle"></i>
+          <span class="hidden sm:inline">Report One</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0c0c0c] text-zinc-200 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .heading-font {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  .demonic-bg {
+    background-color: #0c0c0c;
+    background-image:
+      linear-gradient(rgba(185, 28, 28, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(185, 28, 28, 0.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .section-header {
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 55%;
+    height: 3px;
+    background: linear-gradient(to right, #b91c1c, transparent);
+  }
+
+  .sin-card {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #3f1f1f;
+  }
+
+  .sin-card:hover {
+    transform: translateY(-3px);
+    border-color: #b91c1c;
+    box-shadow:
+      0 0 0 1px #b91c1c,
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  .trifecta-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .sin-card:hover .trifecta-icon {
+    transform: scale(1.1) rotate(2deg);
+  }
+
+  .manifesto {
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .sin-year {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}

@@ -1,0 +1,76 @@
+---
+import { ACQUISITION_MAILTO, SITE } from '../config/site';
+---
+
+<footer class="relative z-10 border-t border-zinc-800 bg-black">
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <div class="relative overflow-hidden rounded-3xl border border-red-900/25 bg-gradient-to-br from-zinc-900 via-black to-red-950/20 p-8 sm:p-12 mb-12">
+      <div
+        class="absolute -top-24 -right-24 w-64 h-64 rounded-full bg-red-600/10 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="absolute -bottom-24 -left-24 w-64 h-64 rounded-full bg-blue-600/10 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative z-10 grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
+        <div>
+          <p class="text-xs uppercase tracking-[3px] text-red-500 font-extrabold mb-4">Domain Available for Acquisition</p>
+          <h2 class="heading-font text-3xl sm:text-4xl tracking-tight mb-4">
+            liecheatorsteal.com — A Category-Defining Digital Asset
+          </h2>
+          <p class="text-zinc-400 max-w-xl leading-relaxed">
+            Three words. One unforgettable domain. Positioned at the intersection of political commentary, viral
+            memorability, and premium brand equity — this is a rare strategic asset for serious buyers. Inquire for
+            pricing, transfer logistics, and escrow options.
+          </p>
+        </div>
+
+        <div class="rounded-2xl p-6 sm:p-8 border border-zinc-800 bg-zinc-950/90 backdrop-blur-xl">
+          <p class="text-xs uppercase tracking-[2px] text-zinc-500 font-semibold mb-2">Acquisition Contact</p>
+          <a
+            href={`mailto:${SITE.email}`}
+            class="block text-2xl sm:text-3xl heading-font text-white hover:text-red-500 transition-colors break-all"
+          >
+            {SITE.email}
+          </a>
+          <a
+            href={ACQUISITION_MAILTO}
+            class="mt-6 inline-flex w-full items-center justify-center gap-x-3 px-6 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-extrabold rounded-2xl hover:brightness-110 transition-all shadow-lg shadow-red-950/40"
+          >
+            <span>Inquire About Acquisition</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <p class="mt-4 text-[11px] text-zinc-500 text-center tracking-wide">
+            Confidential inquiries &bull; Response within 24 hours
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-xs text-zinc-500 leading-relaxed max-w-4xl mb-10">
+      This website is for demonstration and informational purposes only. It does not constitute an offer of services,
+      a commitment to deploy, or a guarantee of outcomes. All statistics, projections, and references to specific
+      technologies are based on publicly available information as of July 2, 2026 and are subject to change.
+    </p>
+
+    <div class="flex items-center justify-center gap-x-2 mb-6">
+      <i class="fa-solid fa-mask text-red-500"></i>
+      <i class="fa-solid fa-dice text-yellow-500"></i>
+      <i class="fa-solid fa-hand-holding-dollar text-blue-500"></i>
+      <span class="font-mono text-xs tracking-[3px] text-red-600 ml-2">LIECHEATORSTEAL.COM</span>
+    </div>
+
+    <p class="text-xs text-zinc-500 max-w-md mx-auto text-center mb-8">
+      This site exists to document the pattern. Not affiliated with any political party.
+      Facts drawn from public records, official statements, congressional disclosures, and verified reporting.
+      The trifecta is the business model.
+    </p>
+
+    <div class="pt-8 border-t border-zinc-800 text-xs text-zinc-600 flex flex-col md:flex-row gap-y-4 items-center justify-between">
+      <div>&copy; 2026 liecheatorsteal.com. All rights reserved.</div>
+      <div class="font-mono tracking-widest">BUILT TO EXPOSE &bull; TRUTH DOESN'T NEED SPIN</div>
+    </div>
+  </div>
+</footer>

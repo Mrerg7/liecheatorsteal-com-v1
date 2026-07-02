@@ -1,0 +1,133 @@
+<section id="testify" class="max-w-4xl mx-auto px-6 pb-24 scroll-mt-20">
+  <div class="bg-zinc-900 border border-red-950 rounded-3xl p-10 md:p-14">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-red-950 rounded-2xl mb-4">
+        <i class="fa-solid fa-exclamation-triangle text-red-600 text-3xl"></i>
+      </div>
+      <h2 class="heading-font text-4xl font-semibold tracking-tighter">REPORT A LIE, CHEAT, OR STEAL</h2>
+      <p class="text-zinc-400 mt-2">Witnessed it in real time? Document it here. The record grows.</p>
+    </div>
+
+    <form id="report-form" class="space-y-5">
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label for="name" class="block text-xs font-mono tracking-widest text-zinc-500 mb-1.5">YOUR NAME (OR ALIAS)</label>
+          <input
+            type="text"
+            id="name"
+            class="w-full bg-zinc-950 border border-zinc-800 focus:border-red-600 rounded-2xl px-5 py-3 text-sm outline-none"
+            placeholder="Concerned Citizen"
+            required
+          />
+        </div>
+        <div>
+          <label for="sin-type" class="block text-xs font-mono tracking-widest text-zinc-500 mb-1.5">WHICH SIN?</label>
+          <select
+            id="sin-type"
+            class="w-full bg-zinc-950 border border-zinc-800 focus:border-red-600 rounded-2xl px-5 py-3 text-sm outline-none"
+            required
+          >
+            <option value="">Select one...</option>
+            <option value="Lie">LIE — They told a false story</option>
+            <option value="Cheat">CHEAT — They gamed the system</option>
+            <option value="Steal">STEAL — They took what wasn't theirs</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="description" class="block text-xs font-mono tracking-widest text-zinc-500 mb-1.5">
+          DESCRIBE WHAT YOU SAW (INCLUDE DATES, NAMES, SOURCES IF POSSIBLE)
+        </label>
+        <textarea
+          id="description"
+          rows="4"
+          class="w-full bg-zinc-950 border border-zinc-800 focus:border-red-600 rounded-3xl px-5 py-4 text-sm outline-none resize-y"
+          placeholder="I watched them claim X while doing Y on [date]..."
+          required
+        ></textarea>
+      </div>
+
+      <div class="flex items-center gap-x-4">
+        <button
+          type="submit"
+          class="flex-1 md:flex-none px-10 py-4 bg-red-600 hover:bg-red-700 active:bg-red-800 transition-all font-semibold rounded-3xl text-sm flex items-center justify-center gap-x-3 shadow-xl shadow-red-950/40"
+        >
+          <i class="fa-solid fa-file-alt"></i>
+          <span>ADD TO THE PERMANENT RECORD</span>
+        </button>
+        <button
+          type="button"
+          id="clear-btn"
+          class="px-6 py-4 border border-zinc-700 hover:border-zinc-600 rounded-3xl text-sm font-medium transition-all"
+        >
+          CLEAR
+        </button>
+      </div>
+    </form>
+
+    <div class="text-center mt-6 text-[10px] text-zinc-500 font-mono tracking-widest">
+      ALL REPORTS ARE LOGGED. THE TRIFECTA HATES WITNESSES.
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('report-form') as HTMLFormElement;
+  const clearBtn = document.getElementById('clear-btn');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = (document.getElementById('name') as HTMLInputElement).value.trim() || 'Anonymous Witness';
+    const sinType = (document.getElementById('sin-type') as HTMLSelectElement).value;
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalHTML = btn.innerHTML;
+
+    btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i> ADDED TO THE RECORD';
+    btn.disabled = true;
+    btn.classList.add('!bg-emerald-600');
+
+    setTimeout(() => {
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-6';
+      modal.innerHTML = `
+        <div class="max-w-md w-full bg-zinc-900 border border-red-950 rounded-3xl p-8 text-center">
+          <div class="mx-auto w-16 h-16 bg-red-950 rounded-2xl flex items-center justify-center mb-5">
+            <i class="fa-solid fa-file-alt text-red-600 text-3xl"></i>
+          </div>
+          <h3 class="text-2xl font-semibold tracking-tight mb-2">Report Logged</h3>
+          <p class="text-zinc-400 text-sm mb-6">Your documentation of the <span class="font-semibold text-red-500">${sinType}</span> has been added to the permanent public record.</p>
+          <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4 text-left text-xs mb-6">
+            <div class="font-mono text-red-600 mb-1">WITNESS:</div>
+            <div class="font-medium">${name}</div>
+            <div class="font-mono text-red-600 mt-3 mb-1">SIN TYPE:</div>
+            <div class="font-semibold">${sinType}</div>
+          </div>
+          <button id="modal-close" class="w-full py-3.5 bg-white text-black font-semibold rounded-2xl text-sm active:scale-[0.985] transition-transform">
+            RETURN TO THE RECORD
+          </button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      modal.querySelector('#modal-close')?.addEventListener('click', () => {
+        modal.remove();
+        form.reset();
+      });
+
+      btn.innerHTML = originalHTML;
+      btn.disabled = false;
+      btn.classList.remove('!bg-emerald-600');
+    }, 1100);
+  });
+
+  clearBtn?.addEventListener('click', () => form?.reset());
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modals = document.querySelectorAll('.fixed.inset-0');
+      if (modals.length) modals[modals.length - 1].remove();
+    }
+  });
+</script>

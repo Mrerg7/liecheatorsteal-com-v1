@@ -1,0 +1,56 @@
+---
+import { cfImageUrl, CF_IMAGES } from '../config/site';
+
+const heroImage = cfImageUrl(CF_IMAGES.heroImageId);
+---
+
+<header class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+  <div
+    class="absolute inset-0 z-0"
+    style={`background-image: url('${heroImage}'); background-size: cover; background-position: center; background-repeat: no-repeat;`}
+    aria-hidden="true"
+  ></div>
+  <div class="absolute inset-0 z-[1] bg-gradient-to-b from-black/70 via-black/60 to-[#0c0c0c]" aria-hidden="true"></div>
+
+  <div class="relative z-[2] max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
+    <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-zinc-900/80 border border-zinc-800 mb-6 backdrop-blur-sm">
+      <div class="flex items-center -space-x-1">
+        <i class="fa-solid fa-mask text-red-500"></i>
+        <i class="fa-solid fa-dice text-yellow-500"></i>
+        <i class="fa-solid fa-hand-holding-dollar text-blue-500"></i>
+      </div>
+      <span class="text-xs font-mono tracking-[3px] text-red-500 font-semibold">THE ONLY THREE OPTIONS IN POWER</span>
+    </div>
+
+    <h1 class="heading-font text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tighter leading-none mb-4">
+      WHEN DEMOCRATS<br />HOLD POWER,<br />THEY ONLY<br />
+      <span class="text-red-600">LIE</span>, <span class="text-yellow-500">CHEAT</span>,<br />
+      OR <span class="text-blue-500">STEAL</span>.
+    </h1>
+
+    <p class="max-w-2xl mx-auto text-xl sm:text-2xl text-zinc-400 font-light tracking-tight">
+      The corrosive record.<br />
+      <span class="text-red-500">Accurate facts. No theater. Just the trifecta.</span>
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+      <a
+        href="#lie"
+        class="px-8 py-4 bg-white text-black font-semibold rounded-3xl text-sm flex items-center gap-x-3 hover:bg-zinc-200 transition-all active:scale-[0.985]"
+      >
+        <span>ENTER THE RECORD</span>
+        <i class="fa-solid fa-arrow-down"></i>
+      </a>
+      <a
+        href="#testify"
+        class="px-8 py-4 border border-zinc-700 hover:border-red-600 font-semibold rounded-3xl text-sm flex items-center gap-x-3 transition-all"
+      >
+        <span>REPORT A SIN</span>
+      </a>
+    </div>
+
+    <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500">
+      2016 — 2026 • PLACES OF POWER • NO EXCEPTIONS
+    </div>
+  </div>
+</header>
