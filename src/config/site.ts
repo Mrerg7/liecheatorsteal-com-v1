@@ -2,11 +2,12 @@ export const SITE = {
   name: 'liecheatorsteal.com',
   title: 'liecheatorsteal.com • Democrats in Power: Lie, Cheat, or Steal',
   description:
-    'All Democrats do in places of power is lie, cheat, or steal. The corrosive record of the last decade. Accurate facts. No spin. Just the three deadly sins of governance.',
+    'Lie. Cheat. Steal. The documented record of Democratic power — facts only, no spin. See the trifecta.',
   url: 'https://liecheatorsteal.com',
   email: 'sales@desertrich.com',
   locale: 'en_US',
   publishedDate: '2026-07-02',
+  googleSiteVerification: 'BCkh_9jA2bTFpkmvMysnIm9UI59pVXRTyux6B_1JLMY',
 } as const;
 
 export const CF_IMAGES = {

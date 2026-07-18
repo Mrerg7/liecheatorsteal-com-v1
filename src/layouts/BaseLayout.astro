@@ -23,19 +23,19 @@ const structuredData = {
   '@graph': [
     {
       '@type': 'WebSite',
-      '@id': `${SITE.url}/#website`,
-      url: SITE.url,
+      '@id': `${canonicalURL}#website`,
+      url: canonicalURL,
       name: SITE.name,
       description,
       inLanguage: 'en-US',
     },
     {
       '@type': 'WebPage',
-      '@id': `${SITE.url}/#webpage`,
-      url: SITE.url,
+      '@id': `${canonicalURL}#webpage`,
+      url: canonicalURL,
       name: title,
       description,
-      isPartOf: { '@id': `${SITE.url}/#website` },
+      isPartOf: { '@id': `${canonicalURL}#website` },
       datePublished: SITE.publishedDate,
       dateModified: SITE.publishedDate,
       inLanguage: 'en-US',
@@ -46,11 +46,11 @@ const structuredData = {
     },
     {
       '@type': 'Product',
-      '@id': `${SITE.url}/#product`,
+      '@id': `${canonicalURL}#product`,
       name: 'liecheatorsteal.com Premium Domain Name',
       description:
         'A memorable, category-defining .com domain capturing a powerful political narrative. Available for acquisition.',
-      url: SITE.url,
+      url: canonicalURL,
       image: OG_IMAGE,
       category: 'Premium Domain Name',
       brand: {
@@ -70,14 +70,14 @@ const structuredData = {
     },
     {
       '@type': 'Organization',
-      '@id': `${SITE.url}/#organization`,
+      '@id': `${canonicalURL}#organization`,
       name: SITE.name,
-      url: SITE.url,
+      url: canonicalURL,
       email: SITE.email,
     },
     {
       '@type': 'Article',
-      '@id': `${SITE.url}/#article`,
+      '@id': `${canonicalURL}#article`,
       headline: 'Democrats in Power: Lie, Cheat, or Steal',
       description,
       image: OG_IMAGE,
@@ -88,10 +88,10 @@ const structuredData = {
         name: SITE.name,
       },
       publisher: {
-        '@id': `${SITE.url}/#organization`,
+        '@id': `${canonicalURL}#organization`,
       },
       mainEntityOfPage: {
-        '@id': `${SITE.url}/#webpage`,
+        '@id': `${canonicalURL}#webpage`,
       },
     },
   ],
@@ -129,6 +129,9 @@ const structuredData = {
     <meta name="twitter:image:alt" content="liecheatorsteal.com — Democrats in Power: Lie, Cheat, or Steal" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {SITE.googleSiteVerification && (
+      <meta name="google-site-verification" content={SITE.googleSiteVerification} />
+    )}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
