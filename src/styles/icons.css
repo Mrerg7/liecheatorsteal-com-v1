@@ -1,0 +1,37 @@
+/* Font Awesome Free 6.5.1, solid icons used on this page.
+   Font licensed under SIL OFL 1.1. These rules are adapted from the MIT-licensed CSS.
+   https://fontawesome.com */
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/fa-solid-900.woff2") format("woff2");
+}
+
+.fa-solid {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-style: normal;
+  line-height: 1;
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+}
+
+.fa-arrow-down::before { content: "\f063"; }
+.fa-arrow-right::before { content: "\f061"; }
+.fa-balance-scale::before { content: "\f24e"; }
+.fa-check::before { content: "\f00c"; }
+.fa-dice::before { content: "\f522"; }
+.fa-envelope::before { content: "\f0e0"; }
+.fa-exclamation-triangle::before { content: "\f071"; }
+.fa-file-alt::before { content: "\f15c"; }
+.fa-hand-holding-dollar::before { content: "\f4c0"; }
+.fa-mask::before { content: "\f6fa"; }
+.fa-skull::before { content: "\f54c"; }
